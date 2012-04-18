@@ -1,0 +1,737 @@
+/*
+   css Copyright Â© 2005-2012 Karelia Software. All rights reserved.
+   css released under Creative Commons License  - http://creativecommons.org/licenses/by-sa/2.5/
+   All associated graphics belong to their respective owners and are licensed separately.
+*/
+
+/* IE7 hacks */
+
+*:first-child+html .gridItem img {
+	position:relative;
+	top:0px;
+}
+
+*:first-child+html .gridItem h3 {
+	position:relative;
+	top:0px;
+}
+
+/* Navigation arrows */
+div.text-navigation { text-align:center; margin-bottom:1em;}
+div.text-navigation div { display:inline; margin:0px 0.5em; }
+.collection-navigation .disabled-navigation { text-indent:-5000px; }
+
+/* 2.0 wrap compatibility. 2.0-compatible designs can further adjust these if they need */
+.wide { display:block; }
+
+.narrow.left {   /* Some designs won't respect without !important */
+    float:left!important;
+    clear:left!important;
+}
+.narrow.right {
+    float:right!important;
+    clear:right!important;
+}
+
+.wide.left .graphic, img.wide.left { margin-left:0px; margin-right:auto; }
+.wide.center .graphic, img.wide.center { margin-left:auto; margin-right:auto; }
+.wide.right .graphic, img.wide.right { margin-left:auto; margin-right:0px; }
+
+.ImageElement.left { text-align:left; }
+.ImageElement.center { text-align:center; }
+.ImageElement.right { text-align:right; }
+
+/* Captions should align themselves with the graphic */
+.graphic-container.left .caption { text-align:left; }
+.graphic-container.center .caption { text-align:center; }
+.graphic-container.right .caption { text-align:right; }
+
+/* Inline iframes need to display as a block to layout right */
+.graphic iframe { display:block; }
+
+/* Pagelet photo grids should be generally be auto width (some 1.x designs hardcoded an exact width) */
+.pagelet .photogrid-index { width:auto; }
+
+/* For content like amazon which forces white background. Design SHOULD set color for A tag and text color. */
+.whiteBackground
+{
+	background-color:white;
+}
+
+.article-info
+{
+	margin-bottom:1em;
+}
+
+/* Firefox reduce dotted lines on links */
+.photo-navigation a:focus, .replaced a:focus {overflow:hidden;}
+
+/* Disqus correction to prevent overflow scroll bars in some designs */
+#dsq-content { overflow:hidden; }
+#dsq-content .dsq-auth-header { width: auto!important; }
+#dsq-content .dsq-by { margin: 4px 6px 0px 0px; }
+#dsq-content .dsq-by a, #dsq-content .dsq-by a:hover { border: 0px none; }
+#dsq-content h3 { margin:0px; }
+
+/* Site menus. Don't wrap the top level items, and wrap sub-menu items normaly. */
+#sitemenu-content ul li {white-space: nowrap}
+* html #sitemenu-content ul li {white-space: normal}
+*:first-child+html #sitemenu-content ul li {white-space: normal}
+#sitemenu-content ul ul li {white-space: normal}
+#sitemenu-content span.in { position: relative; }
+
+.photogrid-index-bottom { clear:left; }
+
+/*
+   css Copyright Â© 2005-2012 Karelia Software. All rights reserved.
+   css released under Creative Commons License
+        - http://creativecommons.org/licenses/by-sa/2.5/
+   All associated graphics belong to their respective owners
+        and are licensed separately.
+*/
+
+a img { border: none; }
+
+/*CATHEDRAL*/
+
+/* General styles  */
+
+body {
+	text-align: center; /*this is for IE5/PC*/
+	word-wrap: break-word;
+}
+
+#page {
+	text-align: left; /*this corrects the body text-align selector, strangely not working in IE5.5 though*/
+}
+
+.clear {
+	clear: both;
+	height: 10px;
+}
+
+#page a { text-decoration:none; }
+#page a:link { color: #282838; font-weight: bold; text-decoration: none; }
+#page a:visited { color: #242428; }
+#page a:hover { text-decoration: underline; }
+
+.hidden {
+    display: none;
+}
+
+/* Images embedded in text. "narrow" are 200 pixels wide or smaller. */
+
+#main img, .video object {
+	padding: 10px;
+	/* margin: 10px; */
+	background: #ebe8e5;
+}
+
+/* handle video different for our IE/Win friends */
+* html .video  {
+	padding:6px;
+}
+*:first-child+html .video  {
+	padding:6px;
+}
+
+#main .pagelet img, #main .pagelet .video object {
+	border:none;
+	margin: 0;
+	padding: 0;
+}
+
+.narrow {
+	display: block;
+	clear: right;
+    float: right;
+	margin:3px 0 5px 10px;
+}
+
+img.wide {
+	display: block;
+	clear: both;
+}
+.narrow.left{
+	margin:3px 10px 5px 0;
+}
+.narrow.right{
+	margin:3px 0 5px 10px;
+}
+
+a img {
+	border: 1px solid #282838;
+}
+
+#main a:hover img {
+	background: #ebe8e5 url(c-bk-corner.gif) no-repeat top left;
+}
+
+/* Block Level formatting, more or less in descending order */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin-bottom: 0.8em;
+}
+
+h5, h6 {
+	font-size: 100%;
+}
+
+body {
+	background: #ebe8e5;
+	font-size: 76%;
+	color: #43290a;
+	font-family: "lucida grande", arial, sans-serif;
+}
+
+		#page {
+			position: relative;
+			background: #dfdad5;
+			margin: 0 auto;
+			padding: 10px;
+			width: 769px;
+  		voice-family: "\"}\"";
+  		voice-family: inherit;
+	  	width: 749px;
+	 	}
+	html>body #page {
+  		width: 749px;
+		}
+
+			#page-top {
+				position: relative;
+			}
+
+				#title {
+					position: relative;
+					background: #95939e;
+					width: 749px;
+					overflow: hidden;
+				}
+
+					#title a img, #title img {
+						float: right;
+						border:none;
+					}
+
+					#title p {
+						position: relative;
+						top: 0;
+						margin: 15px 15px 0 15px;
+						padding: 4px;
+					}
+
+					h1 {
+						position: relative;
+						top: 0;
+						left: 0;
+						padding: 4px;
+						font-size: 1.6em;
+						font-family: Zapfino, "lucida grande", arial, sans-serif;
+						font-weight:normal;
+					}
+
+					.has-logo #title p {
+						width:500px;
+					}
+
+						h1 a {
+						  text-decoration: none;
+						  color: #ddd;
+						  font-weight: normal!important;
+						}
+
+					#title h1 {
+						margin: 15px 15px 0 15px;
+					}
+
+				#sitemenu-container {
+					clear: both;
+					margin-top: 9px;
+					background: url(c-bk-header.jpg) center -52px no-repeat;
+					padding-top: 134px;
+					border-bottom: 1px solid #95939e;
+					border-top: 1px solid #ebe8e5;
+				}
+
+				.home-page #sitemenu-container {
+					padding-top: 265px;
+					background-position: center top;
+				}
+
+					#sitemenu-content {
+							background: #9796a1;
+							border-top: 10px solid #dfdad5;
+					}
+
+						#sitemenu-content ul {
+							background: url(c-bk-nav-bottom.gif) repeat-x bottom;
+							list-style-type: none;
+							padding-top: 12px;
+							padding-bottom: 12px;
+							padding-right:20px;
+							text-align: center;
+						}
+
+						#sitemenu-content li {
+							display: inline;
+							padding: 3px 0;
+							margin: 0 0 0 5px;
+						}
+
+							#sitemenu-content li a,
+							#sitemenu-content li.currentPage span.in {
+								line-height: 1.5em;
+								padding-left: 15px;
+								font-weight: bold;
+							}
+
+							#sitemenu-content li.currentPage span.in,
+							#sitemenu-content li.currentParent > a > span.in {
+								color: #eee;
+							}
+
+							#sitemenu-content a:link, #sitemenu-content a:visited {
+								color: #282838;
+								text-decoration: none;
+							}
+
+							#sitemenu-content a:hover, #sitemenu-content a:focus, #sitemenu-content a:active {
+								background: url(c-glyph.gif) no-repeat left;
+							}
+
+							#sitemenu-content img {
+								border: 0px none;
+							}
+
+							#sitemenu-content ul li ul {
+								background: #9796a1;
+								padding-left: 3px;
+								box-shadow: 3px 2px 5px #ccc;
+								-webkit-box-shadow: 3px 2px 5px #ccc;
+								-moz-box-shadow: 3px 2px 5px #ccc;
+							}
+
+							#sitemenu-content ul li ul li span.in {
+								padding: 3px 0px 3px 3px;
+							}
+
+							#sitemenu-content ul li ul li.currentPage span.in {
+								margin-left: 18px;
+								padding-left: 0px;
+							}
+
+							#sitemenu-content li.currentPage li span.in {
+								padding-left: 0px;
+							}
+
+							#sitemenu-content .rightarrowclass {
+								top: 6px;
+							}
+
+			#page-content ul, #page-content ol {
+				margin-top: 15px;
+			}
+
+			#page-content ol, #page-content dl {
+				margin-bottom: 15px;
+			}
+
+			#page-content ul ul, #page-content ol ul, #page-content dl ul,
+			#page-content ul ol, #page-content ol ol, #page-content dl ol {
+				margin-top: 2px;
+			}
+
+			#page-content ol ul, #page-content ol ol, #page-content ol dl,
+			#page-content dl ul, #page-content dl ol, #page-content dl dl {
+				margin-bottom: 2px;
+			}
+
+			#page-content ul li {
+				font-size: 1em;
+				list-style-image: url(c-bullet.gif);
+				margin: 0 0 0 28px;
+				border-bottom: 1px dotted #777;
+				padding: 4px 0;
+			}
+			/* IE Hack */
+			/* Hides from IE5-mac \*/
+			* html #page-content ul li {
+				border-bottom: 1px solid #666;
+            }
+			/* End hide from IE5-mac */
+
+			ul ul li {
+				border:none!important;
+			}
+
+			ol {
+				padding-left:28px;
+			}
+			#page-content ol>li {
+				list-style-image: none;
+				margin-left: 0;
+			}
+
+			#page-content li h3 {
+				font-size: 1em;
+			}
+
+			#page-content li:hover {
+				background: #ebe8e5;
+			}
+
+            #sidebar-container {
+				float: left;
+				width: 260px;
+				margin: 0;
+				padding: 0;
+				min-height: 50px; /*for newer browsers*/
+			}
+
+			/* IE Hack */
+			/* Hides from IE5-mac \*/
+			* html #sidebar-container {
+					height: 50px; /*for IE, treats height as min-height*/
+            }
+			/* End hide from IE5-mac */
+
+
+                #sidebar {
+					background: url(c-bk-sidebar-main.gif) repeat-y;
+					color: #43290a;
+					padding: 25px;
+					font-size: .8em;
+					margin-right: 10px;
+                }
+                #sidebar-container:after { content: url("bk-clear.gif"); }
+
+						.pagelet {
+							width: 200px;
+							word-wrap: break-word;
+							overflow: hidden;
+							margin-bottom: 15px;
+						}
+
+						.pagelet img {
+							border:none;
+						}
+
+						#main {
+							padding: 25px 0px 20px 5px;
+							word-wrap: break-word;
+
+						}
+
+				    #main .pagelet {
+				    	float: left;
+				    	margin: 10px;
+				    	padding: 10px;
+					}
+
+					#main .pagelet.bordered {
+						border: 1px dotted ;
+						background:transparent
+					}
+
+					#sidebar .pagelet {
+						padding-bottom: 15px;
+					}
+
+					#sidebar .pagelet.bordered {
+						border: 1px dotted;
+					}
+
+						#sidebar .pagelet.bordered p {
+							padding:0px 5px;
+						}
+
+				    	.pagelet h4 {
+				    		padding: 2px 4px;
+				    		margin-bottom: 5px;
+				    	}
+
+				    	#sidebar .pagelet h4 {
+				    		background: #ebe8e5 url(c-bk-heading-small.gif) no-repeat;
+				    		min-height: 18px;
+				    		padding-left: 24px;
+				    		font-size: 110%;
+				    	}
+
+				body.allow-sidebar #main {
+					float: left;
+					width: 479px;
+				}
+
+				body.no-sidebar #main h2 {
+					text-align: center;
+					font-size: 1.5em;
+				}
+
+				body.allow-sidebar #main h2 {
+					color: #282838;
+					font-size: 1.5em;
+					background: #ebe8e5 url(c-bk-heading.gif) no-repeat;
+					padding: 8px 0 6px 55px;
+					min-height: 35px;
+					voice-family: "\"}\"";
+					voice-family: inherit;
+				}
+				/*html>body.allow-sidebar #main h2 {
+					height: 30px;
+				}*/
+
+					h2, h3 {
+						margin-bottom: 15px;
+					}
+
+						.article {
+							border-bottom: 3px solid #282838;
+						}
+						/*.allow-sidebar .article{
+							float:left;
+						}*/
+							.article-info {
+								clear: both;
+							}
+
+							.article-thumbnail {
+								float:left;
+								margin: 3px 10px 5px 0;
+							}
+							.callout{
+								float:right;
+							}
+
+							.callout .pagelet {
+								background:#dfdad5;
+								clear:left;
+								float:left;
+								width:200px;
+							}
+
+							.blockquote-container blockquote {
+								font-style: italic;
+								margin: 0em 1em;
+								position: relative;
+							}
+
+							.blockquote-container blockquote:before {
+								content: 'Â»';
+								position: absolute;
+								left: -1em;
+								text-align: right;
+							}
+
+							.blockquote-container blockquote:after {
+								content: 'Â«';
+								position: absolute;
+								right: -1em;
+								bottom: 0em;
+							}
+
+
+			#page-bottom {
+					clear: both;
+					background: #9796a1;
+					padding: 15px 15px 15px 25px;
+					background: #9796a1 url(c-bk-nav-bottom.gif) repeat-x bottom;
+			}
+
+				#page-bottom p {
+					margin-bottom: 0;
+				}
+
+
+/* Other specific classes nested with an .article */
+
+.ImageElement, .VideoElement {
+	text-align: center;
+	clear: both;
+}
+
+.caption {
+	margin-top:2px;
+}
+
+/* Used on Photo Grid Pages ... */
+.photogrid-index {
+	text-align:center;
+	margin:auto;
+	/*float:left;*/
+}
+
+.photogrid-index a {
+	font-weight:normal !important;
+}
+
+.gridItem {
+	float:left;
+	position:relative;
+	width:145px;
+	height:205px;
+ 	overflow:hidden;
+    padding:2px;
+	margin:0 5px;
+}
+
+body.no-sidebar .gridItem {
+	margin:0px 14px;
+}
+
+.gridItem h3 {
+	font-size:1em;
+	font-weight:normal;
+	position:absolute;
+	top:165px;
+	width:126px;
+	padding:0px 10px;
+}
+
+.gridItem img {
+    border: 1px solid rgb(80, 80, 80);
+    margin: auto !important; /* need !important here to override #main img */
+	padding: 9px !important; /* 1px less than usual to fit 3 images in a row */
+    display:block;
+    position: absolute;
+    top: 0;
+    bottom: 40px;
+    right: 0;
+    left: 0;
+}
+
+#sidebar .photogrid-index{
+	width:auto;
+	margin-left:30px;
+	font-size:12px;
+}
+
+/* IE Hack */
+/* Hides from IE5-mac \*/
+* html body.no-sidebar .gridItem {
+	margin:0px 11px;
+}
+
+* html .gridItem img {
+	position: relative;
+	padding:8px !important;
+	top:5px;
+}
+
+* html .gridItem h3 {
+	position: relative;
+	top: 10px;
+}
+/* End hide from IE5-mac */
+
+
+/* Used on index summary pages */
+
+		.listing-index li h3 a {
+		    text-decoration:none;
+		    font-size:1em;
+		    font-weight:normal;
+		}
+
+/* Individual Photo Pages */
+
+.photo-navigation {
+	position: relative;
+	margin:-8px auto 8px auto;
+	width: 300px;
+	height: 48px;
+	padding:0px;
+}
+
+
+.photo-navigation div {
+	position: absolute;
+	height: 48px;
+	width: 76px;
+}
+
+.photo-navigation a {
+	display: block;
+	text-indent: -5000px;
+	height:100%;
+	width:100%;
+}
+
+	#previous-photo	{
+		left:0px;
+		background: url(photo-prev-inactive.png) no-repeat;
+		text-indent:-10000px;
+	}
+	#previous-photo a {
+		background: url(photo-prev.png) no-repeat;
+	}
+
+	#next-photo {
+		right:0px;
+		background: url(photo-next-inactive.png) no-repeat;
+		text-indent:-10000px;
+	}
+	#next-photo a {
+		background: url(photo-next.png) no-repeat;
+	}
+
+	#photo-list {
+		left:112px;
+		background: url(photo-menu-inactive.png) no-repeat;
+		text-indent:-10000px;
+	}
+	#photo-list a {
+		background: url(photo-menu.png) no-repeat;
+	}
+.text-navigation #previous-photo, .text-navigation #next-photo, .text-navigation  #photo-list, .text-navigation a, .text-navigation a:hover{
+	background:none!important;
+	width:auto!important;
+	font-weight:bold;
+}
+h5.index-title{ margin:5px 0;}
+#sidebar ul{
+	margin-top:0px;
+}
+/*
+.article{float:left;}
+.svx-placeholder{float:left; clear:both;}*/
+
+.callout-container, .graphic-container { clear:both; }
+
+#sitemenu-container { background-image: url("banner.jpeg"); }
+
+.ncc_form_label
+{
+    width: 175px;
+}
+
+.ncc_form_lable_column
+{
+    width: 175px;
+}
+
+.ncc_form_input
+{
+    width: 175px;
+}
+
+.ncc_form_age
+{
+    width: 30px;
+}
+
+#ncc_register_button_div
+{
+    border-bottom: solid;
+    border-top:  solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-width: 1px;
+}

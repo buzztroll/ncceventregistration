@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block headscripts %}
+    <script src="/scripts/namo.js"></script>
+{% endblock %}
+
+{% block bodytag %}onload="loadPage();"{% endblock %}
+
+{% block content_title %}About{% endblock %}
+{% block content %}
+
+<h2 class="title"><span class="in">6th ANNUAL HANALEI BAY OPEN WATER SWIM</span></h2>
+<P>You can use this page to register for the Namolokama 6th annual Hanalei Bay open water swim.
+    For more information about the swim please click <a href="http://www.namolokama.com/ocean-swim-2012/">here</a>.</P>
+
+<P>Fill out the information below to be registered for the event.  There is a $XX entrance fee for the event.
+    Once you click the
+    <i>register</i> button below your payment will be processed via Google Checkout.  You will receive a confirmation
+    email notifying you that your payment was accepted and that you are registered.  If you experience any problems
+    please contact <mailto="buzztroll@gmail.com">buzztroll@gmail.com</mailto></P>
+
+<form method="POST" action="/swim/register">
+    <table class="ncc_form_table">
+        <tr>
+            <td class="ncc_form_lable_column">
+                <label class="ncc_form_label" id="firstname_lbl">First Name</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_firstname" type="text" id="ncc_firstname_txt" label="firstname_lbl"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="lastname_lbl">Last Name</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_lastname" type="text" id="ncc_lastname_txt" label="lastname_lbl"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="age_lbl">Age</label>
+            </td>
+            <td>
+                <input class="ncc_form_age" name="ncc_age" type="text" id="ncc_age_txt" label="age_lbl"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="gender_lbl">Gender</label>
+            </td>
+            <td>
+                <select id="ncc_gender_select" label="gender_lbl" name="ncc_gender" >
+                    <option>male</option>
+                    <option>female</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label id="event_lbl">Event</label>
+            </td>
+            <td>
+                <select id="ncc_swim_event" label="event_lbl" name="ncc_swim_event" >
+                    {% for c in events %}
+                    <option>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="email_lbl">Email Address (optional)</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_emailaddr" type="text" id="ncc_emailaddr_txt" label="email_lbl"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="phone_lbl">Phone Number (optional)</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_phone" type="text" id="ncc_phone_txt" label="phone_lbl"/>
+            </td>
+        </tr>
+    </table>
+    <div id="ncc_agreement_div"></div>
+        <input type="checkbox" name="ncc_agreement" value="agree">
+            I have read and agree to the release form <a href="x">here</a>
+        </input>
+    </div>
+    <div id="ncc_register_button_div">
+        <input type="submit" value="Register"/>
+    </div>
+    
+
+    <input type="hidden" name="ncc_transaction_reference" value="{{ ncc_transaction_reference }}"></hidden>
+</form>
+<p>If you wish to be contacted in the event of race cancellation or alteration please enter and email address or phone number.</p>
+<p>If you have any difficulty or need to make any changes after completing the registration please send email to buzztroll@gmail.com</p>
+
+{% endblock %}

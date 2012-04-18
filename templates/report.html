@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content_title %}About{% endblock %}
+{% block content %}
+
+<h2 class="title"><span class="in">Namolokama OC1 Registration</span></h2>
+        <h3>Report</h3>
+
+<pre>
+payment state,  firstname, lastname, gender, age, course, boattype, boatnumber, emailaddress, transaction_id, googleordernumber, sp first name, sp last name, sp gender, sp age
+    {% for rd in race_data_array %}
+{{ rd.payment_state }},{{ rd.firstname }}, {{ rd.lastname }}, {{ rd.gender }}, {{ rd.age }}, {{ rd.course }}, {{ rd.boattype }}, {{ rd.boatnumber }}, {{ rd.emailaddress }}, {{ rd.transaction_id }}, {{ rd.googleordernumber }}, {{ rd.second_paddler_firstname }}, {{ rd.second_paddler_lastname }}, {{ rd.second_paddler_gender }}, {{ rd.second_paddler_age }}
+    {% endfor %}
+</pre>
+
+{% endblock %}

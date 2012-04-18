@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block headscripts %}
+    <script src="/scripts/namo.js"></script>
+{% endblock %}
+
+{% block bodytag %}onload="loadPage();"{% endblock %}
+
+
+{% block content_title %}About{% endblock %}
+{% block content %}
+
+<h2 class="title"><span class="in">Namolokama OC1 Registration</span></h2>
+<P>You can use this page to pre-register for the Namolokama Canoe Club's 2012 OC1 race.
+    For more information about the race please click <a href="http://www.namolokama.com/">here</a>.</P>
+
+<P>Fill out the information below to be registered for the event.  There is a $30 entrance fee for the OC2 race and a
+    $25 entrance fee for all other events.  Once you click the
+    <i>register</i> button below your payment will be processed via Google Checkout.  You will receive a confirmation
+    email notifying you that your payment was accepted and that you are registered.</P>
+
+<form method="POST" action="/register">
+    <table class="ncc_form_table">
+        <tr>
+            <td class="ncc_form_lable_column">
+                <label class="ncc_form_label" id="firstname_lbl">First Name</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_firstname" type="text" id="ncc_firstname_txt" label="firstname_lbl"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="lastname_lbl">Last Name</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_lastname" type="text" id="ncc_lastname_txt" label="lastname_lbl"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="age_lbl">Age</label>
+            </td>
+            <td>
+                <input class="ncc_form_age" name="ncc_age" type="text" id="ncc_age_txt" label="age_lbl"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="gender_lbl">Gender</label>
+            </td>
+            <td>
+                <select id="ncc_gender_select" label="gender_lbl" name="ncc_gender" >
+                    <option>male</option>
+                    <option>female</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr id="ncc_second_firstname_tr">
+
+            <td>
+                <label class="ncc_form_label" id="second_firstname_lbl">Second Paddler's First Name</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_second_firstname" type="text" id="ncc_second_firstname_txt" label="second_firstname_lbl"/>
+            </td>
+        </tr>
+        <tr id="ncc_second_lastname_tr">
+            <td>
+                <label id="second_lastname_lbl">Second Paddler's Last Name</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_second_lastname" type="text" id="ncc_second_lastname_txt" label="second_lastname_lbl"/>
+            </td>
+        </tr>
+        <tr id="ncc_second_age_tr">
+            <td>
+                <label id="second_age_lbl">Second Paddler's Age</label>
+            </td>
+            <td>
+                <input  class="ncc_form_age" name="ncc_second_age" type="text" id="ncc_second_age_txt" label="second_age_lbl"/>
+            </td>
+        </tr>
+        <tr id="ncc_second_gender_tr">
+            <td>
+                <label id="second_gender_lbl">Second Paddler's Gender</label>
+            </td>
+            <td>
+                <select id="ncc_second_gender_select" label="second_gender_lbl" name="ncc_second_gender" >
+                    <option>male</option>
+                    <option>female</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label id="boat_number_lbl">Boat Number</label>
+            </td>
+            <td>
+                <input class="ncc_form_age" name="ncc_boat_number" type="text" id="ncc_boat_number_txt" label="boat_number_lbl"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="coarse_lbl">Course</label>
+            </td>
+            <td>
+                <select id="ncc_course" label="coarse_lbl" name="ncc_course" >
+                    {% for c in courses %}
+                    <option>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="boat_type_lbl">Boat Type</label>
+            </td>
+            <td>
+                <select id="ncc_boat_type_select" label="boat_type_lbl" name="ncc_boat_type" onchange="change_boat_type()">
+                    {% for c in boat_types %}
+                    <option>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="email_lbl">Email Address (optional)</label>
+            </td>
+            <td>
+                <input class="ncc_form_input" name="ncc_emailaddr" type="text" id="ncc_emailaddr_txt" label="email_lbl"/>
+            </td>
+        </tr>
+    </table>
+    <div id="ncc_agreement_div"></div>
+        <input type="checkbox" name="ncc_agreement" value="agree">
+            I have read and agree to the release form <a href="x">here</a>
+        </input>
+    </div>
+    <div id="ncc_register_button_div">
+        <input type="submit" value="Register"/>
+    </div>
+    
+
+    <input type="hidden" name="ncc_transaction_reference" value="{{ ncc_transaction_reference }}"></hidden>
+</form>
+<p>If you wish to be contacted in the event of race cancellation or alteration please enter and email address.</p>
+<p>If you have any difficulty or need to make any changes after completing the registration please send email to buzztroll@gmail.com</p>
+
+
+{% endblock %}
