@@ -7,9 +7,9 @@
         <h3>Report</h3>
 
 <pre>
-payment state,  firstname, lastname, gender, age, course, boattype, boatnumber, emailaddress, transaction_id, googleordernumber, sp first name, sp last name, sp gender, sp age
+payment state,  firstname, lastname, gender, age, boattype, boatnumber, emailaddress, transaction_id, googleordernumber, sp first name, sp last name, sp gender, sp age
     {% for rd in race_data_array %}
-{{ rd.payment_state }},{{ rd.firstname }}, {{ rd.lastname }}, {{ rd.gender }}, {{ rd.age }}, {{ rd.course }}, {{ rd.boattype }}, {{ rd.boatnumber }}, {{ rd.emailaddress }}, {{ rd.transaction_id }}, {{ rd.googleordernumber }}, {{ rd.second_paddler_firstname }}, {{ rd.second_paddler_lastname }}, {{ rd.second_paddler_gender }}, {{ rd.second_paddler_age }}
+{{ rd.payment_state }},{{ rd.firstname }}, {{ rd.lastname }}, {{ rd.gender }}, {{ rd.age }}, {{ rd.boattype }}, {{ rd.boatnumber }}, {{ rd.emailaddress }}, {{ rd.transaction_id }}, {{ rd.googleordernumber }}, {{ rd.second_paddler_firstname }}, {{ rd.second_paddler_lastname }}, {{ rd.second_paddler_gender }}, {{ rd.second_paddler_age }}
     {% endfor %}
 </pre>
 

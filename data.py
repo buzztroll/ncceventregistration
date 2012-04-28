@@ -31,5 +31,4 @@ class RacersData(EventBaseData):
     second_paddler_gender = db.StringProperty(required=False)
     boatnumber = db.StringProperty(required=True)
     boattype = db.StringProperty(required=True)
-    course = db.StringProperty(required=True)
 

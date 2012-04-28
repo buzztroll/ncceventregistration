@@ -18,7 +18,7 @@
     <i>register</i> button below your payment will be processed via Google Checkout.  You will receive a confirmation
     email notifying you that your payment was accepted and that you are registered.</P>
 
-<form method="POST" action="/register">
+<form method="POST" action="/oc1/register">
     <table class="ncc_form_table">
         <tr>
             <td class="ncc_form_lable_column">
@@ -99,18 +99,6 @@
             </td>
             <td>
                 <input class="ncc_form_age" name="ncc_boat_number" type="text" id="ncc_boat_number_txt" label="boat_number_lbl"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label id="coarse_lbl">Course</label>
-            </td>
-            <td>
-                <select id="ncc_course" label="coarse_lbl" name="ncc_course" >
-                    {% for c in courses %}
-                    <option>{{ c }}</option>
-                    {% endfor %}
-                </select>
             </td>
         </tr>
         <tr>

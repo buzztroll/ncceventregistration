@@ -21,7 +21,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from basepages import BaseHandler
 from swimapp import SwimHandler, SwimRegisterHandler, SwimReportHandler, get_swim_order_lookup, get_swim_order_by_gon
-from util import NamoException, get_courses, get_boat_types, send_email, get_event_price, verify_age
+from util import NamoException, get_boat_types, send_email, get_event_price, verify_age
 from request import make_gco_request
 from data import RacersData
 from google.appengine.ext import db
@@ -69,28 +69,35 @@ def process_rd_state(rd, state):
     if state == 'REVIEWING':
         # Google Checkout is reviewing the order.
         adminonly = True
+        mail = False
     elif state == 'CHARGEABLE':
         # The order is ready to be charged.
         adminonly = True
+        mail = True
     elif state == 'CHARGING':
         # The order is being charged; you may not refund or cancel an order until is the charge is completed.
         adminonly = True
     elif state == 'CHARGED':
         # The order has been successfully charged; if the order was only partially charged, the buyer's account page will reflect the partial charge.
         adminonly = False
+        mail = True
     elif state == 'PAYMENT_DECLINED':
         # The charge attempt failed.
         adminonly = True
+        mail = True
     elif state == 'CANCELLED':
         # Either the buyer or the seller canceled the order. An order's financial state cannot be changed after the order is canceled.
         adminonly = False
+        mail = True
     elif state == 'CANCELLED_BY_GOOGLE':
         # Google canceled the order. Google may cancel orders due to a failed charge without a replacement credit card being provided within a set period of time or due to a failed risk check.
         adminonly = False
+        mail = True
 
     rd.payment_state = state
     rd.put()
-    send_email(rd, adminonly=adminonly)
+    if mail:
+        send_email(rd, adminonly=adminonly)
 
 
 
@@ -150,7 +157,6 @@ class CallbackHandler(BaseHandler):
 
 class OC1Handler(BaseHandler):
     def page_logic(self):
-        self.template_values['courses'] = get_courses()
         self.template_values['boat_types'] = get_boat_types()
         self.template_values['ncc_transaction_reference'] = str(uuid.uuid4())
         self.write_page('oc1registration.html')
@@ -162,7 +168,6 @@ class RegisterHandler(BaseHandler):
         last_name = self.get_request_value_normalized('ncc_lastname', must=True, label="Last Name")
         boat_number = self.get_request_value_normalized('ncc_boat_number', must=True, label="Boat Number")
         boat_type = self.get_request_value_normalized('ncc_boat_type', must=True, label="Boat Type")
-        course = self.get_request_value_normalized('ncc_course', must=True, label="Course")
         email = self.get_request_value_normalized('ncc_emailaddr')
         agree = self.get_request_value_normalized('ncc_agreement')
         transaction = str(uuid.uuid4())
@@ -181,8 +186,6 @@ class RegisterHandler(BaseHandler):
             raise NamoException("Invalid gender")
         age = verify_age(age)
 
-        if course not in get_courses():
-            raise NamoException("Invalid course description")
         if boat_type not in get_boat_types():
             raise NamoException("Invalid boat type")
         if agree != "agree":
@@ -192,11 +195,11 @@ class RegisterHandler(BaseHandler):
             logging.error("The transaction ID already exists, what to do?")
             raise NamoException("The transaction ID already exists, what to do?")
 
-        description = "Namolokama canoe race.  Course %s.  Watercraft %s" % (course, boat_type)
+        description = "Namolokama canoe race.  Watercraft %s" % (boat_type)
         event_name = boat_type
         price = get_event_price(boat_type)
         rd = RacersData(firstname=first_name, lastname=last_name, boatnumber=boat_number, boattype=boat_type,
-                        course=course, agreed=True,transaction_id=transaction, price=price, emailaddress=email,
+                        agreed=True,transaction_id=transaction, price=price, emailaddress=email,
                         age=age, gender=gender, description=description, event_name=event_name)
 
         if boat_type == 'oc2':
@@ -226,11 +229,12 @@ class RegisterHandler(BaseHandler):
 def main():
     application = webapp.WSGIApplication([
         ('/', OC1Handler),
+        ('/oc1', OC1Handler),
         ('/swim', SwimHandler),
         ('/callback', CallbackHandler),
         ('/report/oc1', ReportHandler),
         ('/report/swim', SwimReportHandler),
-        ('/register', RegisterHandler),
+        ('/oc1/register', RegisterHandler),
         ('/swim/register', SwimRegisterHandler)],
                                          debug=True)
     util.run_wsgi_app(application)

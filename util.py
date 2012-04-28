@@ -28,10 +28,7 @@ def send_email(rd, adminonly=True, subject=""):
         reply_to=sender,
         sender=sender)
 
-def get_courses():
-    return ['short', 'long']
-
-g_events_dict = {"oc1" : 25.00, "surfski": 25.00, "sup": 25.00, "oc2": 30.00}
+g_events_dict = {"oc1" : 25.00, "surfski": 25.00, "sup": 25.00, "oc2": 30.00, "paddleboard": 25.00}
 
 def get_boat_types():
     global g_events_dict

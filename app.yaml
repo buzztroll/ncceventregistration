@@ -1,4 +1,4 @@
-application: namolokamaoc1
+application: nccpaddle
 version: 1
 runtime: python
 api_version: 1
@@ -22,5 +22,20 @@ handlers:
     script: main.py
     login: admin
 
-  - url: .*
+  - url: /swim
+    script: main.py
+
+  - url: /swim/register
+    script: main.py
+
+  - url: /oc1
+    script: main.py
+
+  - url: /oc1/register
+    script: main.py
+
+  - url: /callback
+    script: main.py
+
+  - url: /
     script: main.py
