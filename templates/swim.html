@@ -12,12 +12,14 @@
 <P>You can use this page to register for the Namolokama 6th annual Hanalei Bay open water swim.
     For more information about the swim please click <a href="http://www.namolokama.com/ocean-swim-2012/">here</a>.</P>
 
-<P>Fill out the information below to be registered for the event.  There is a $25 entrance fee for the event.
+<P>Fill out the information below to be registered for the event.
     Once you click the
     <i>register</i> button below your payment will be processed via Google Checkout.  You will receive a confirmation
     email notifying you that your payment was accepted and that you are registered.  If you experience any problems
     please contact <mailto="buzztroll@gmail.com">buzztroll@gmail.com</mailto></P>
 
+
+        <p>Fees: Youth $10 ($15 after 7/15), 1/2 Mile $25 ($35 after 7/15), 1 or 2 Mile $30 ($40 after 7/15) </p>
 <form method="POST" action="/swim/register">
     <table class="ncc_form_table">
         <tr>
@@ -70,6 +72,22 @@
         </tr>
         <tr>
             <td>
+                <label id="shirt_lbl">Shirt Size</label>
+            </td>
+            <td>
+                <select id="ncc_shirtsize" label="shirt_lbl" name="ncc_shirtsize" >
+                    <option>YOUTH S</option>
+                    <option>YOUTH M</option>
+                    <option>YOUTH L</option>
+                    <option>ADULT S</option>
+                    <option>ADULT M</option>
+                    <option>ADULT L</option>
+                    <option>ADULT XL</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <label id="email_lbl">Email Address (optional)</label>
             </td>
             <td>
@@ -87,7 +105,7 @@
     </table>
     <div id="ncc_agreement_div"></div>
         <input type="checkbox" name="ncc_agreement" value="agree">
-            I have read and agree to the release form <a href="x">here</a>
+            I have read and agree to the release form <a href="/static/swimrelease.html">here</a>
         </input>
     </div>
     <div id="ncc_register_button_div">

@@ -6,10 +6,36 @@
 <h2 class="title"><span class="in">Namolokama Swim Registration</span></h2>
         <h3>Report</h3>
 
-<pre>
-payment state,  firstname, lastname, gender, age, course, emailaddress, transaction_id, googleordernumber
+{% for rd in swim_data_array %}
+    {% if rd.payment_state == "CHARGED" %}
+        <hr>
+        <table>
+            <tr>
+                <td>Last name</td><td>{{ rd.lastname }}</td><td>First</td><td>{{ rd.firstname }}</td>
+            </tr>
+            <tr>
+                <td>Age</td><td>{{ rd.age }}</td><td>Gender</td><td>{{ rd.gender }}</td>
+            </tr>
+            <tr>
+                <td>Email address</td><td>{{ rd.emailaddress }}</td><td>Phone #</td><td> {{ rd.phonenumber }}</td>
+            </tr>
+            <tr>
+                <td>Event</td><td>{{ rd.swim_event }}</td><td>Shirt size</td><td>{{ rd.shirt_size }}</td>
+            </tr>
+            <tr>
+                <td>Amount paid</td><td> {{ rd.price }}</td><td>Date registered</td><td>{{ rd.created_time }}</td>
+            </tr>
+
+        </table>
+        <hr><br>
+    {% endif %}
+{% endfor %}
+
+
+        <pre>
+payment state,  firstname, lastname, shirt, gender, age, course, emailaddress, phone, when, price, transaction_id, googleordernumber
     {% for rd in swim_data_array %}
-{{ rd.payment_state }},{{ rd.firstname }}, {{ rd.lastname }}, {{ rd.gender }}, {{ rd.age }}, {{ rd.swim_event }}, {{ rd.emailaddress }}, {{ rd.phonenumber }}, {{ rd.transaction_id }}, {{ rd.googleordernumber }}
+{{ rd.payment_state }},{{ rd.firstname }}, {{ rd.lastname }}, {{ rd.shirt_size }}, {{ rd.gender }}, {{ rd.age }}, {{ rd.swim_event }}, {{ rd.emailaddress }}, {{ rd.phonenumber }}, {{ rd.created_time }}, {{ rd.price }}, {{ rd.transaction_id }}, {{ rd.googleordernumber }}
     {% endfor %}
 </pre>
 

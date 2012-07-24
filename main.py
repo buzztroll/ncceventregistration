@@ -14,13 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from google.appengine.dist import use_library
+use_library('django', '1.3')
+
 import cgi
 import logging
 import uuid
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from basepages import BaseHandler
-from swimapp import SwimHandler, SwimRegisterHandler, SwimReportHandler, get_swim_order_lookup, get_swim_order_by_gon
+from swimapp import SwimHandler, SwimRegisterHandler, SwimReportHandler, get_swim_order_lookup, get_swim_order_by_gon, SwimFinalHandler
 from util import NamoException, get_boat_types, send_email, get_event_price, verify_age
 from request import make_gco_request
 from data import RacersData
@@ -93,6 +96,9 @@ def process_rd_state(rd, state):
         # Google canceled the order. Google may cancel orders due to a failed charge without a replacement credit card being provided within a set period of time or due to a failed risk check.
         adminonly = False
         mail = True
+    else:
+        mail = False
+        logging.info("Unexpected state %s" % (str(state)))
 
     rd.payment_state = state
     rd.put()
@@ -157,9 +163,10 @@ class CallbackHandler(BaseHandler):
 
 class OC1Handler(BaseHandler):
     def page_logic(self):
-        self.template_values['boat_types'] = get_boat_types()
-        self.template_values['ncc_transaction_reference'] = str(uuid.uuid4())
-        self.write_page('oc1registration.html')
+        #self.template_values['boat_types'] = get_boat_types()
+        #self.template_values['ncc_transaction_reference'] = str(uuid.uuid4())
+        #self.write_page('oc1registration.html')
+        self.write_page('closed.html')
 
 class RegisterHandler(BaseHandler):
 
@@ -222,7 +229,11 @@ class RegisterHandler(BaseHandler):
 
         html = make_gco_request(rd)
 
-        self.template_values['button'] = html()
+        button_value = html()
+
+        logging.error("html button | %s" % (button_value))
+
+        self.template_values['button'] = button_value
         self.write_page('checkout.html')
 
 
@@ -234,6 +245,7 @@ def main():
         ('/callback', CallbackHandler),
         ('/report/oc1', ReportHandler),
         ('/report/swim', SwimReportHandler),
+        ('/report/swimfinal', SwimFinalHandler),
         ('/oc1/register', RegisterHandler),
         ('/swim/register', SwimRegisterHandler)],
                                          debug=True)

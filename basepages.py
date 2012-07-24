@@ -46,7 +46,7 @@ class BaseHandler(webapp.RequestHandler):
         pass
 
 
-    def write_page(self, template_filename):
+    def write_page(self, template_filename, autoescape=True):
         path = os.path.join(os.path.dirname(__file__), "templates/" + template_filename)
         self.response.out.write(template.render(path, self.template_values))
 

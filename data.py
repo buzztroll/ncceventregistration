@@ -23,6 +23,7 @@ class EventBaseData(db.Model):
 class SwimmerData(EventBaseData):
     phone = db.StringProperty()
     swim_event = db.StringProperty(required=True)
+    shirt_size = db.StringProperty(required=False)
 
 class RacersData(EventBaseData):
     second_paddler_firstname = db.StringProperty(required=False)
