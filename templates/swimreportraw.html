@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content_title %}About{% endblock %}
+{% block content %}
+
+<h2 class="title"><span class="in">Namolokama Swim Registration</span></h2>
+        <h3>Report</h3>
+
+<pre>
+payment state,  firstname, lastname, shirt, gender, age, course, emailaddress, phone, when, price, transaction_id, googleordernumber
+    {% for rd in swim_data_array %}
+{{ rd.payment_state }},{{ rd.firstname }}, {{ rd.lastname }}, {{ rd.shirt_size }}, {{ rd.gender }}, {{ rd.age }}, {{ rd.swim_event }}, {{ rd.emailaddress }}, {{ rd.phonenumber }}, {{ rd.created_time }}, {{ rd.price }}, {{ rd.transaction_id }}, {{ rd.googleordernumber }}
+    {% endfor %}
+</pre>
+
+{% endblock %}

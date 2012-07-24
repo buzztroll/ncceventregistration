@@ -1,0 +1,97 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/style/final.css" title="Final" />
+</head>
+
+<body>
+
+{% for rd in swim_data_array %}
+    {% if rd.payment_state == "CHARGED" %}
+
+<h1 style="page-break-before:always"> {{ rd.lastname }}, {{ rd.firstname }}</h1>
+<hr>
+<div class="legalheaders">
+<table>
+    <tr>
+        <td>Age</td><td>{{ rd.age }}</td><td>Gender</td><td>{{ rd.gender }}</td>
+    </tr>
+    <tr>
+        <td>Email address</td><td>{{ rd.emailaddress }}</td><td>Phone #</td><td> {{ rd.phonenumber }}</td>
+    </tr>
+    <tr>
+        <td>Event</td><td>{{ rd.swim_event }}</td><td>Shirt size</td><td>{{ rd.shirt_size }}</td>
+    </tr>
+    <tr>
+        <td>Amount paid</td><td> {{ rd.price }}</td><td>Date registered</td><td>{{ rd.created_time }}</td>
+    </tr>
+
+</table>
+</div>
+
+<h3>ASSUMPTION OF RISK, WAIVER AND RELEASE OF LIABILITY AGREEMENT</h3>
+
+    <div class="legaltext">
+    <p>
+    In consideration of, and as a condition to, being allowed to participate in the HANALEI BAY OPEN WATER SWIM
+    (the "Event") presented by NAMOLOKAMA O' HANALEI CANOE CLUB (the "Club") the below Partici-pant, or in the case
+    of a minor Participant, the below parent or guardian on behalf of the Participant represents and agree(s) without
+    reservation to all of the following:
+    </p>
+<ol>
+        <li>
+            <p>
+            The undersigned has investigated and understands what the Event entails. The Participant is in good health and in proper physical condition and sufficiently capable to participate in the Event. The under-signed accepts that it is solely the Participant’s responsibility to determine that Participant is sufficiently fit and possesses sufficient swimming ability to safely participate in this Event.
+            </p>
+        </li>
+        <li>
+            <p>
+            The undersigned acknowledges and fully understands that each participant will be engaging in activities that involve substantial risk of serious injury or illness, including permanent disability and death, and se-vere social and economic losses, which might result not only from their own actions, inactions, inexperi-ence or negligence, but the action, inaction, inexperience or negligence of others, the rules of play, forces of nature, or condition of the premises. Further, that there may be other risks encountered that are not ex-pressed herein, or not known to the Club or reasonably foreseeable at the below date. The undersigned nevertheless knowingly assumes all of the foregoing risks of participating in the Event (the “Risks”) and hereby accepts personal responsibility for the damages, compensation, reimbursement and/or expenses of all and any kinds following any such injury, illness, loss, temporary or permanent disa-bility, or death, however and by whomever caused, and resulting directly or indirectly, in whole or in part, therefrom (the “Losses”).
+            </p>
+        </li>
+        <li>
+            <p>
+            The undersigned further, on behalf of the Participant and the Participant’s survivors, heirs, administrators and personal representatives hereby irrevocably agrees to release, waive all claims and demands against, discharge, indemnify, hold harmless and covenant not to sue the Club, its officers, direc-tors, representatives and members and the Event’s other sponsors and helpers of all kinds for any claim or demand arising by reason of the Participant’s participation in the Event, any of the involved Risks and/or any resulting Losses.
+            </p>
+        </li>
+        <li>
+            <p>
+            I also waive all claim of rights to photo and other media preservation of the event and agree that Namolo-kama may use them in any manner it chooses.
+            </p>
+        </li>
+</ol>
+<p>
+I have read and understood all the information provided, and the terms and provisions contained in this Agreement.
+</p>
+<pre>
+
+
+
+        X_________________________________       ________________________         __________, 2012
+              Signature                                   Name                       Date
+
+
+</pre>
+
+
+<p>
+PARENT'S OR GUARDIAN'S SIGNATURE IF APPLICANT IS UNDER 18 YEARS OF AGE
+</p>
+<p>
+I am authorized and hereby give my permission and consent for the above Participant to engage in the Event and hereby join in all of the above provisions. To my knowledge the Participant is physically able to compete in the Event. A physician may treat the Participant whenever necessary until other arrangements can be made; and the Event officials and/or member(s) of the Club may, without liability, render first aid if he/she is qualified to do so or if the circumstances reasonably call for it for the expected benefit to the Participant.
+</p>
+<pre>
+
+
+
+        X_________________________________       ________________________         __________, 2012
+           Parent or guardian's Signature                   Name                       Date
+
+
+</pre>
+</div>
+    {% endif %}
+
+{% endfor %}
+
+</body>
+</html>
